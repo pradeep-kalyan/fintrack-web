@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import BalanceCard from "./components/BalanceCard";
 import TransactionForm from "./components/TransactionForm";
 import TransList from "./components/Translist";
+import "./index.css";
 
 function App() {
   const [expense, addexpense] = useState(0);
