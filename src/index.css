@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Grey+Qo&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Jersey+15&family=Playwrite+AU+VIC+Guides&family=Quicksand:wght@300..700&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .card {
+    @apply shadow-2xl hover:drop-shadow-xl bg-gray-200 h-auto text-center font-mono font-semibold m-5 p-5  ring-2 rounded-md;
+  }
+  .about-font {
+    font-family: "Jersey 15", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+}
