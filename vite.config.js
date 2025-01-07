@@ -1,10 +1,11 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  plugins: [react()],
-  base: "/Fintrack/", // Path for GitHub Pages
+  root: "./",
+
+  base: "/fintrack-web/", // e.g., '/notes-sharing-app/'
+
   build: {
-    outDir: "dist", // Output folder for the production build
+    outDir: "dist", // Ensure the build output is correct
   },
 });

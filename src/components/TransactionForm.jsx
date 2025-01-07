@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-const TransactionForm = ({ addExpense, addIncome, addtransactions }) => {
+const TransactionForm = ({ addExpense, addIncome, addTransactions }) => {
   const [amount, setAmount] = useState(0);
   const [desc, setDesc] = useState("Nil");
   const [category, setCategory] = useState("");
-  const [datetime, setdatetime] = useState("");
+  const [datetime, setDatetime] = useState("");
   const [selectedType, setSelectedType] = useState("income");
 
-  const check = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const transaction = {
       amount: Number(amount),
@@ -16,26 +16,29 @@ const TransactionForm = ({ addExpense, addIncome, addtransactions }) => {
       type: selectedType,
       datetime,
     };
+
     if (selectedType === "income") {
       addIncome((prev) => prev + Number(amount));
     } else if (selectedType === "expense") {
       addExpense((prev) => prev + Number(amount));
     }
-    addtransactions((prev) => [...prev, transaction]); // Fixed: Adding to the array correctly
+
+    addTransactions((prev) => [...prev, transaction]);
+
     setAmount(0);
     setDesc("");
     setCategory("");
+    setDatetime("");
     setSelectedType("income");
   };
 
   return (
     <div className="rounded-xl shadow-2xl w-auto h-auto m-10 p-10 text-center">
-      <form onSubmit={check}>
-        {" "}
-        {/* Fixed: Proper form handling */}
+      <form onSubmit={handleSubmit}>
         <h2 className="text-center font-[cursive] text-2xl font-semibold text-green-400">
           Add Your Transactions
         </h2>
+
         {/* Amount Input */}
         <div className="p-2 m-3">
           <label htmlFor="amount" className="formtext mx-1">
@@ -44,27 +47,26 @@ const TransactionForm = ({ addExpense, addIncome, addtransactions }) => {
           <input
             type="number"
             value={amount}
-            onChange={(e) => {
-              setAmount(e.target.value);
-            }}
+            onChange={(e) => setAmount(e.target.value)}
             className="amount rounded-lg p-2 border border-gray-300"
             required
           />
         </div>
-        {/* Description Input */}
-        <div>
-          <label for="transaction-dt">Date&time </label>
+
+        {/* Date and Time Input */}
+        <div className="p-2 m-3">
+          <label htmlFor="transaction-dt">Date & Time</label>
           <input
             type="datetime-local"
             id="transaction-dt"
             name="transaction-dt"
             value={datetime}
-            min="2025-01-1T00:00"
-            onChange={(e) => {
-              setdatetime(e.target.value);
-            }}
+            min="2025-01-01T00:00"
+            onChange={(e) => setDatetime(e.target.value)}
           />
         </div>
+
+        {/* Description Input */}
         <div className="p-2 m-3">
           <label htmlFor="desc" className="formtext mx-1">
             Description
@@ -76,6 +78,7 @@ const TransactionForm = ({ addExpense, addIncome, addtransactions }) => {
             className="desc rounded-lg p-2 border border-gray-300"
           />
         </div>
+
         {/* Category Dropdown */}
         <div className="p-2 m-3">
           <label htmlFor="category" className="formtext mx-1">
@@ -95,6 +98,7 @@ const TransactionForm = ({ addExpense, addIncome, addtransactions }) => {
             <option value="education">Education</option>
           </select>
         </div>
+
         {/* Income/Expense Radio Buttons */}
         <div className="flex flex-row justify-center items-center w-auto h-auto">
           <div className="p-3 m-3">
@@ -118,6 +122,7 @@ const TransactionForm = ({ addExpense, addIncome, addtransactions }) => {
             <label className="text-red-500 ml-2">Expense</label>
           </div>
         </div>
+
         {/* Submit Button */}
         <button
           type="submit"

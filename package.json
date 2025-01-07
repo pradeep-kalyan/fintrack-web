@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/pradeep-kalyan/Fintrack.git",
+  "homepage": "https://pradeep-kalyan.github.io/fintrack-web",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
